@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <base target="_top">
+</head>
+<body>
+    <h1>Data dari Google Sheets</h1>
+    <table id="dataTable" border="1"></table>
+
+    <script>
+        function fetchData() {
+            google.script.run.withSuccessHandler(displayData).getData();
+        }
+
+        function displayData(data) {
+            const table = document.getElementById('dataTable');
+            data.forEach((row) => {
+                const tr = document.createElement('tr');
+                row.forEach((cell) => {
+                    const td = document.createElement('td');
+                    td.textContent = cell;
+                    tr.appendChild(td);
+                });
+                table.appendChild(tr);
+            });
+        }
+
+        window.onload = fetchData;
+    </script>
+</body>
+</html>

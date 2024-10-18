@@ -1,0 +1,94 @@
+<div class="content">
+    <div class="title3 text-center"><b>Application Look-up</b></div>
+    <div class="chp_search" id="int">
+        <form action="/home/catalog/application.html" method="get">
+            <ul class="list-unstyled">
+                <li class="year">
+                    <label>Year</label>
+                    <select name="year" id="year" class="form-select" style="width: 65px;">
+                        <option value="">All</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                        <option value="1926-36">1926-36</option>
+                        <option value="1925-46">1925-46</option>
+                        <option value="1923-57">1923-57</option>
+                    </select>
+                </li>
+                <li>
+                    <label>Make</label>
+                    <select name="make" id="make" class="form-select" style="width:240px">
+                        <option value="">All</option>
+                        <option value="ACURA">ACURA</option>
+                        <option value="ALLIS-CHALMERS">ALLIS-CHALMERS</option>
+                        <option value="AM GENERAL">AM GENERAL</option>
+                        <option value="AMERICAN MOTORS">AMERICAN MOTORS</option>
+                        <option value="AUDI">AUDI</option>
+                        <option value="BMW">BMW</option>
+                        <option value="FORD">FORD</option>
+                        <option value="HONDA">HONDA</option>
+                        <option value="TOYOTA">TOYOTA</option>
+                        <option value="VOLKSWAGEN">VOLKSWAGEN</option>
+                        <option value="WILLYS">WILLYS</option>
+                    </select>
+                </li>
+                <li>
+                    <label>Model</label>
+                    <select name="model" id="model" style="width:220px">
+                        <option value="">All</option>
+                        <option value="MDX">MDX</option>
+                        <option value="RLX">RLX</option>
+                        <option value="TLX">TLX</option>
+                        <option value="RDX">RDX</option>
+                        <option value="ILX">ILX</option>
+                        <option value="TL">TL</option>
+                        <option value="TSX">TSX</option>
+                        <option value="ZDX">ZDX</option>
+                        <option value="RL">RL</option>
+                        <option value="CL">CL</option>
+                        <option value="INTEGRA">INTEGRA</option>
+                        <option value="SLX">SLX</option>
+                        <option value="LEGEND">LEGEND</option>
+                        <option value="VIGOR">VIGOR</option>
+                        <option value="AMX">AMX</option>
+                        <option value="RAMBLER">RAMBLER</option>
+                        <option value="ROGUE">ROGUE</option>
+                    </select>
+                </li>
+                <li>
+                    <label>Part Type</label>
+                    <select name="part_type" id="type" style="width:240px">
+                        <option value="">All</option>
+                        <option value="Valves">Valves</option>
+                        <option value="Valve Seat">Valve Seat</option>
+                    </select>
+                </li>
+                <li>
+                    <label>Engine</label>
+                    <select name="engine" id="engine" style="width:640px">
+                        <option value="">All</option>
+                        <option value="165-4">165-4</option>
+                        <option value="1608CC ENG. 3.150&quot; BORE 125 BC ENG 80MM 124S SPIDER">1608CC ENG. 3.150" BORE 125 BC ENG 80MM 124S SPIDER</option>
+                        <option value="17 X 25 VERTICAL DIESEL">17 X 25 VERTICAL DIESEL</option>
+                        <option value="175">175</option>
+                        <option value="180-185GS">180-185GS</option>
+                        <!-- Add other engine options here -->
+                    </select>
+                </li>
+                <li class="mt-3">
+                    <label>Application Details</label>
+                    <textarea name="application_details" class="form-control" rows="4" placeholder="Enter application details..."></textarea>
+                </li>
+            </ul>
+            <div class="button mt-3">
+                <input type="submit" class="btn btn-primary" value="Search">
+                <input type="reset" class="btn btn-secondary ms-2" value="Reset">
+            </div>
+        </form>
+    </div>
+    <div class="cb"></div>
+    <div class="search_notice">*Note*</div>
+    <div class="search_notice">Heavy-Duty, Industrial, Marine and Tractor applications do not have a year. 
+        <p>Only fill in the Make and Engine for those applications.</p>
+    </div>
+</div>

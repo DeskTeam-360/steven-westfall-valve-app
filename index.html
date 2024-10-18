@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Information Tabs</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> <!-- Link to the external CSS file -->
+</head>
+<body>
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Product Information</h1>
+    <ul class="nav nav-tabs justify-content-between" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation" style="flex: 1;">
+            <a class="nav-link active" id="part-number-tab" data-bs-toggle="tab" href="#part-number" role="tab" aria-controls="part-number" aria-selected="true" style="text-align: center; font-size: 18px;">Part Number</a>
+        </li>
+        <li class="nav-item" role="presentation" style="flex: 1;">
+            <a class="nav-link" id="application-tab" data-bs-toggle="tab" href="#application" role="tab" aria-controls="application" aria-selected="false" style="text-align: center; font-size: 18px;">Application</a>
+        </li>
+        <li class="nav-item" role="presentation" style="flex: 1;">
+            <a class="nav-link" id="interchange-tab" data-bs-toggle="tab" href="#interchange" role="tab" aria-controls="interchange" aria-selected="false" style="text-align: center; font-size: 18px;">Interchange</a>
+        </li>
+        <li class="nav-item" role="presentation" style="flex: 1;">
+            <a class="nav-link" id="specification-tab" data-bs-toggle="tab" href="#specification" role="tab" aria-controls="specification" aria-selected="false" style="text-align: center; font-size: 18px;">Specification</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="part-number" role="tabpanel" aria-labelledby="part-number-tab">
+            <div class="content">
+                <div class="title3 text-center"><b>Part Number Look-up</b></div>
+                <div class="chp_search">
+                    <form id="searchForm">
+                        <div class="form-row d-flex align-items-end">
+                            <div class="col">
+                                <label>Part Number</label>
+                                <input type="text" name="part_number" class="form-control" placeholder="Enter part number">
+                            </div>
+                            <div class="col">
+                                <label>Part Type</label>
+                                <select name="type" class="form-select">
+                                    <option value="All">All</option>
+                                    <option value="Valves">Valves</option>
+                                    <option value="Valve Seat">Valve Seat</option>
+                                </select>
+                            </div>
+                            <div class="col-auto">
+                                <div class="button mt-3">
+                                    <input type="submit" class="btn btn-primary" value="Search">
+                                    <input type="reset" class="btn btn-secondary ms-2" value="Reset">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="search_notice">*Note*</div>
+                <div style="margin-top: 10px; font-size: 14px;">
+                    All Valve Seat Part Numbers start with W - Example (W-1234) <br>
+                    All Valve Part Numbers start with MW - Example (MW-1234 IN) or (MW-1234 EX)
+                </div>
+            </div>
+    
+            <!-- Results Table -->
+            <div class="results" id="results" style="margin-top: 20px;">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Part Number</th>
+                            <th>Part Type</th>
+                            <th>Note</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultsBody">
+                        <!-- Results will be dynamically inserted here -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="content-toggle" style="margin-top: 20px;">
+                <button id="toggleButton" onclick="toggleContent()">Show Content</button>
+            </div>
+
+            <div class="content" id="contentPN" style="display: none; margin-top: 20px;">
+                <!-- Specification Table -->
+                <h5>Specification</h5>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Detail</th>
+                            <th>Data (Inches)</th>
+                            <th>Data (mm)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Rows for specifications will be dynamically inserted here -->
+                    </tbody>
+                </table>
+
+                <!-- Applications Table -->
+                <h5>Applications</h5>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Year</th>
+                            <th>Make</th>
+                            <th>Model</th>
+                            <th>Engine</th>
+                            <th>Go</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultsBodyApp">
+                        <!-- Results will be dynamically inserted here -->
+                    </tbody>
+                </table>
+
+                <!-- Interchanges Table -->
+                <h5>Interchanges</h5>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Part Number</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Rows for interchanges will be dynamically inserted here -->
+                    </tbody>
+                </table>
+            </div>
+                     
+        </div>
+    </div>
+    
+    
+    
+        <div class="tab-pane fade" id="application" role="tabpanel" aria-labelledby="application-tab">
+            <div class="content">
+                <div class="title3 text-center"><b>Application Look-up</b></div>
+                <div class="chp_search">
+                    <form action="#" method="get">
+                        <ul class="list-unstyled">
+                            <li class="year">
+                                <label>Year</label>
+                                <select name="year" id="year" class="form-select" style="width: 65px;">
+                                    <option value="">All</option>
+                                    <option value="2022">2022</option>
+                                    <option value="2021">2021</option>
+                                    <option value="2020">2020</option>
+                                    <option value="1926-36">1926-36</option>
+                                    <option value="1925-46">1925-46</option>
+                                    <option value="1923-57">1923-57</option>
+                                </select>
+                            </li>
+                            <li>
+                                <label>Make</label>
+                                <select name="make" id="make" class="form-select" style="width:240px">
+                                    <option value="">All</option>
+                                    <option value="ACURA">ACURA</option>
+                                    <option value="ALLIS-CHALMERS">ALLIS-CHALMERS</option>
+                                    <option value="AM GENERAL">AM GENERAL</option>
+                                    <option value="AMERICAN MOTORS">AMERICAN MOTORS</option>
+                                    <option value="AUDI">AUDI</option>
+                                    <option value="BMW">BMW</option>
+                                    <option value="FORD">FORD</option>
+                                    <option value="HONDA">HONDA</option>
+                                    <option value="TOYOTA">TOYOTA</option>
+                                    <option value="VOLKSWAGEN">VOLKSWAGEN</option>
+                                    <option value="WILLYS">WILLYS</option>
+                                </select>
+                            </li>
+                            <li>
+                                <label>Model</label>
+                                <select name="model" id="model" class="form-select" style="width:220px">
+                                    <option value="">All</option>
+                                    <option value="MDX">MDX</option>
+                                    <option value="RLX">RLX</option>
+                                    <option value="TLX">TLX</option>
+                                    <option value="RDX">RDX</option>
+                                    <option value="ILX">ILX</option>
+                                    <option value="TL">TL</option>
+                                    <option value="TSX">TSX</option>
+                                    <option value="ZDX">ZDX</option>
+                                    <option value="RL">RL</option>
+                                    <option value="CL">CL</option>
+                                    <option value="INTEGRA">INTEGRA</option>
+                                    <option value="SLX">SLX</option>
+                                    <option value="LEGEND">LEGEND</option>
+                                    <option value="VIGOR">VIGOR</option>
+                                    <option value="AMX">AMX</option>
+                                    <option value="RAMBLER">RAMBLER</option>
+                                    <option value="ROGUE">ROGUE</option>
+                                </select>
+                            </li>
+                            <li>
+                                <label>Part Type</label>
+                                <select name="part_type" id="type" class="form-select" style="width:240px">
+                                    <option value="">All</option>
+                                    <option value="Valves">Valves</option>
+                                    <option value="Valve Seat">Valve Seat</option>
+                                </select>
+                            </li>
+                            <li>
+                                <label>Engine</label>
+                                <select name="engine" id="engine" class="form-select" style="width:640px">
+                                    <option value="">All</option>
+                                    <option value="165-4">165-4</option>
+                                    <option value="1608CC ENG. 3.150&quot; BORE 125 BC ENG 80MM 124S SPIDER">1608CC ENG. 3.150" BORE 125 BC ENG 80MM 124S SPIDER</option>
+                                    <option value="17 X 25 VERTICAL DIESEL">17 X 25 VERTICAL DIESEL</option>
+                                    <option value="175">175</option>
+                                    <option value="180-185GS">180-185GS</option>
+                                    <!-- Add other engine options here -->
+                                </select>
+                            </li>
+                        </ul>
+                        <div class="button mt-3">
+                            <input type="submit" class="btn btn-primary" value="Search">
+                            <input type="reset" class="btn btn-secondary ms-2" value="Reset">
+                        </div>
+                    </form>
+                </div>
+                <div class="search_notice">*Note*</div>
+                <div class="search_notice">Heavy-Duty, Industrial, Marine and Tractor applications do not have a year. 
+                    <p>Only fill in the Make and Engine for those applications.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-pane fade" id="interchange" role="tabpanel" aria-labelledby="interchange-tab">
+            <div class="content"><!--content-->
+
+                <div class="title3 text-center mb-4"><b>Interchange Look-up</b></div>
+            
+                <div class="chp_search" id="int">
+                    <form action="#" method="get">
+                        <ul class="list-unstyled">
+                            <li>
+                                <label>Competitor/OEM Part(s)</label>
+                                <input type="text" name="part" class="form-control" placeholder="Enter part number">
+                            </li>
+            
+                            <li>
+                                <label>Competitor/OEM Name</label>
+                                <select name="name" class="form-select">
+                                    <option value="">All</option>
+                                    <option value="SBI">SBI</option>
+                                    <option value="DANA/PERFECT CIRCLE">DANA/PERFECT CIRCLE</option>
+                                    <option value="DURABOND">DURABOND</option>
+                                    <option value="DYNAGEAR/MANLEY">DYNAGEAR/MANLEY</option>
+                                    <option value="ELGIN">ELGIN</option>
+                                    <option value="TUCKER">TUCKER</option>
+                                    <option value="WAUKESHA">WAUKESHA</option>
+                                    <option value="AE CLEVITE">AE CLEVITE</option>
+                                    <option value="BECK ARNLEY/WORLDPARTS">BECK ARNLEY/WORLDPARTS</option>
+                                    <option value="FEDERAL MOGUL/SEALED POWER">FEDERAL MOGUL/SEALED POWER</option>
+                                    <option value="GM">GM</option>
+                                    <option value="NISSAN/INFINITI">NISSAN/INFINITI</option>
+                                    <option value="TOYOTA">TOYOTA</option>
+                                    <option value="TRW">TRW</option>
+                                    <option value="CHRYSLER">CHRYSLER</option>
+                                    <option value="MERCEDES BENZ">MERCEDES BENZ</option>
+                                    <option value="SERDI">SERDI</option>
+                                    <option value="HYUNDAI">HYUNDAI</option>
+                                    <option value="DETROIT DIESEL">DETROIT DIESEL</option>
+                                    <option value="ERTEL">ERTEL</option>
+                                    <option value="K.O. LEE">K.O. LEE</option>
+                                    <option value="CATERPILLAR">CATERPILLAR</option>
+                                    <option value="ISUZU">ISUZU</option>
+                                    <option value="CUMMINS">CUMMINS</option>
+                                    <option value="ENGINETECH">ENGINETECH</option>
+                                    <option value="FORD">FORD</option>
+                                    <option value="MITSUBISHI">MITSUBISHI</option>
+                                    <option value="BMW">BMW</option>
+                                    <option value="CONTINENTAL">CONTINENTAL</option>
+                                    <option value="NEW HOLLAND">NEW HOLLAND</option>
+                                    <option value="PERKINS">PERKINS</option>
+                                    <option value="SHIBAURA">SHIBAURA</option>
+                                    <option value="HONDA">HONDA</option>
+                                    <option value="JOHN DEERE">JOHN DEERE</option>
+                                    <option value="NAVISTAR/IHC TRUCK">NAVISTAR/IHC TRUCK</option>
+                                    <option value="ALLIS CHALMERS">ALLIS CHALMERS</option>
+                                    <option value="HYSTER">HYSTER</option>
+                                    <option value="JAGUAR">JAGUAR</option>
+                                    <option value="KOMATSU">KOMATSU</option>
+                                    <option value="VOLVO">VOLVO</option>
+                                    <option value="MACK">MACK</option>
+                                    <option value="MAZDA">MAZDA</option>
+                                    <option value="ENGINEQUEST">ENGINEQUEST</option>
+                                    <option value="IVECO">IVECO</option>
+                                    <option value="CASE">CASE</option>
+                                    <option value="M.W.M">M.W.M</option>
+                                    <option value="HINO">HINO</option>
+                                    <option value="SBI #">SBI #</option>
+                                    <option value="ACURA">ACURA</option>
+                                    <option value="AUDI">AUDI</option>
+                                    <option value="VOLKSWAGEN">VOLKSWAGEN</option>
+                                    <option value="BUDA">BUDA</option>
+                                    <option value="HERCULES">HERCULES</option>
+                                    <option value="DAEWOO">DAEWOO</option>
+                                    <option value="SAAB">SAAB</option>
+                                    <option value="WOLVERINE">WOLVERINE</option>
+                                    <option value="KIA">KIA</option>
+                                    <option value="ITM">ITM</option>
+                                    <option value="KUBOTA">KUBOTA</option>
+                                    <option value="LAND ROVER">LAND ROVER</option>
+                                    <option value="LEXUS">LEXUS</option>
+                                    <option value="SCION">SCION</option>
+                                    <option value="MASSEY FERGUSON">MASSEY FERGUSON</option>
+                                    <option value="MELLING">MELLING</option>
+                                    <option value="MINI">MINI</option>
+                                    <option value="MINNEAPOLIS MOLINE">MINNEAPOLIS MOLINE</option>
+                                    <option value="OLIVER TRACTOR">OLIVER TRACTOR</option>
+                                    <option value="OPEL">OPEL</option>
+                                    <option value="PEP">PEP</option>
+                                    <option value="PIONEER">PIONEER</option>
+                                    <option value="ROCK PRODUCTS">ROCK PRODUCTS</option>
+                                    <option value="SAFETY">SAFETY</option>
+                                    <option value="STERLING">STERLING</option>
+                                    <option value="STUDEBAKER">STUDEBAKER</option>
+                                    <option value="SUBARU">SUBARU</option>
+                                    <option value="SUZUKI">SUZUKI</option>
+                                    <option value="THERMO KING">THERMO KING</option>
+                                    <option value="YANMAR">YANMAR</option>
+                                    <option value="TOPLINE">TOPLINE</option>
+                                    <option value="WISCONSIN">WISCONSIN</option>
+                                    <option value="YALE">YALE</option>
+                                    <option value="PACCAR">PACCAR</option>
+                                </select>
+                            </li>
+            
+                            <li>
+                                <label>Part Type</label>
+                                <select name="type" class="form-select">
+                                    <option value="">All</option>
+                                    <option value="Valves">Valves</option>
+                                    <option value="Valve Seat">Valve Seat</option>
+                                </select>
+                            </li>
+                        </ul>
+            
+                        <div class="button mt-3">
+                            <input type="submit" class="btn btn-primary" value="Search">
+                            <input type="reset" class="btn btn-secondary ms-2" value="Reset">
+                        </div>
+                    </form>
+                </div>
+            
+            </div>
+            
+        </div>
+        <div class="tab-pane fade" id="specification" role="tabpanel" aria-labelledby="specification-tab">
+            <div class="content"><!--content-->
+
+                <div class="title3 text-center mb-4"><b>Specification Look-up</b></div>
+            
+                <div class="chp_search" id="sep">
+                    <form action="#" method="get">
+                        <ul class="list-unstyled">
+                            <li>
+                                <label>Part Type</label>
+                                <select name="type" id="part-type" class="form-select" style="width:260px;">
+                                    <option value="">All</option>
+                                    <option value="Valves">Valves</option>
+                                    <option value="Valve Seat">Valve Seat</option>
+                                </select>
+                            </li>
+                            
+                            <li>
+                                <label id="title">Specification Type</label>
+                                <select name="name" id="disabled" class="form-select" disabled="true" style="width: 200px;">
+                                </select>
+                                <select name="name" id="name" class="form-select" style="width: 200px; display: none;">
+                                    <option value="">All</option>
+                                    <option value="2">I.D.</option>
+                                    <option value="7">Exact O.D</option>
+                                    <option value="5">Depth</option>
+                                    <option value="6">Seat Angle</option>
+                                    <option value="3">I.D. Top Taper</option>
+                                    <option value="4">O.D.</option>
+                                </select>
+                                
+                                <select name="names" id="names" class="form-select" style="width: 200px; display: none;">
+                                    <option value="">All</option>
+                                    <option value="8">Chrome or Nitrated</option>
+                                    <option value="9">Head Diameter</option>
+                                    <option value="10">Length</option>
+                                    <option value="6">Seat Angle</option>
+                                    <option value="11">Stem Diameter</option>
+                                    <option value="12">Stem Type</option>
+                                    <option value="13">Tip Length</option>
+                                    <option value="14">Wafer</option>
+                                </select>
+                            </li>
+            
+                            <li>
+                                <label>Comparison</label>
+                                <select name="exp" id="exp" class="form-select" style="width:95px;">
+                                    <option value="">NULL</option>
+                                    <option value="eq">=</option>
+                                    <option value="neq">&lt;&gt;</option>
+                                    <option value="gt">&gt;</option>
+                                    <option value="egt">&gt;=</option>
+                                    <option value="lt">&lt;</option>
+                                    <option value="elt">&lt;=</option>
+                                    <option value="between">Between</option>
+                                </select>
+                            </li>
+            
+                            <li>
+                                <label>Specification Data</label>
+                                <select name="part" id="part" class="form-select" style="width:100px;">
+                                    <option value="">All</option>
+                                </select>
+            
+                                <select name="part1" id="part1" class="form-select" style="display: none;">
+                                    <option value="">All</option>
+                                </select>
+                            </li>
+                        </ul>
+            
+                        <div class="button mt-3">
+                            <input type="submit" class="btn btn-primary" id="search_button" value="Search">
+                            <input type="reset" class="btn btn-secondary ms-2" value="Reset">
+                        </div>
+                    </form>
+                </div>
+            
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<script src="main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

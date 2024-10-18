@@ -1,0 +1,65 @@
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+.tab-content {
+    background-color: #ffffff;
+    border-radius: 0.25rem;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 1rem;
+}
+.nav-tabs {
+    border-bottom: 2px solid #007bff;
+    display: flex;
+    justify-content: space-between;
+}
+.nav-item {
+    flex: 1; /* Each item takes equal space */
+}
+.nav-tabs .nav-link {
+    border: none;
+    border-radius: 0.25rem 0.25rem 0 0;
+    margin-bottom: -2px;
+    font-weight: bold;
+    color: #007bff;
+}
+.nav-tabs .nav-link.active {
+    background-color: #007bff;
+    color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.nav-tabs .nav-link:hover {
+    background-color: #e7f1ff;
+}
+.form-control, .form-select {
+    border-radius: 0.25rem;
+    box-shadow: none;
+}
+.form-control:focus, .form-select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+.search_notice {
+    font-size: 14px;
+    color: #6c757d;
+    margin-top: 10px;
+}
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Space between elements */
+}
+.col {
+    flex: 1; /* Allow columns to grow */
+}
+.col-auto {
+    flex-shrink: 0; /* Prevent the button column from growing */
+}
+
+.title3 {
+    font-size: 24px; /* Adjust the size as needed */
+    margin-bottom: 30px; /* Bottom margin of 30px */
+    font-weight: bold; /* Ensure text is bold */
+}
+
